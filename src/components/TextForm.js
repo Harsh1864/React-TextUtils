@@ -29,10 +29,7 @@ export default function TextForm(props) {
     }
 
     const handleCopy = () =>{
-       var text = document.getElementById('myTxt');
-       text.select();
-       navigator.clipboard.writeText(text.value);
-       document.getSelection().removeAllRanges();
+       navigator.clipboard.writeText(text);
        props.showAlert("Text has been copied","success");
     }
 
@@ -42,7 +39,7 @@ export default function TextForm(props) {
         props.showAlert("Remove the extra spaces","success");
     }
 
-    const wordCount = (text.split(" ").filter((element)=>{return element.length!==0}).length);
+    const wordCount = (text.split(/\s+/).filter((element)=>{return element.length!==0}).length);
     const charCount = (text.length);
     
 
